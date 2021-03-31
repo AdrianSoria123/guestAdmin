@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Corte-Historial</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card class="card_title">
+        <ion-card-header class="card_title" text-center>
+            Historial de Corte
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card class="card_atras">
+        <ion-card-content class="card_atras" *ngFor="let corte of corteHistorico">
+            <ion-card-title>
+                <h4 class="blanco_1">Corte {{corte.folio}}
+                    <button *ngIf="type == 'master'" ion-button clear (click)="deleteCorte(corte.uid)">
+                        <ion-icon name="trash"></ion-icon>
+                      </button>
+                     </h4>
+            </ion-card-title>
+            
+            <ion-item class="card_atras"  >
+                <img class="icon" src="../assets/imgs/icons/calendario.png" item-start>
+                <p class="blanco_2">Fecha de Inicio</p>
+                <ion-badge class="negro" item-end> {{corte.fecha_Inicio}} </ion-badge>
+            </ion-item>
+            <ion-item class="card_atras">
+                <img class="icon" src="../assets/imgs/icons/calendario.png" item-start>
+                <a class="blanco_2">Fecha fin</a>
+                <ion-badge class="negro" item-end> {{corte.fecha_Fin}} </ion-badge>
+            </ion-item>
+            <ion-item class="card_atras">
+                <img class="icon" src="../assets/imgs/icons/billete.png" item-start>
+                <a class="blanco_2">Total</a>
+                <ion-badge item-end> {{corte.totalCorte | currency}}</ion-badge>
+            </ion-item>
+            
+            <ion-item class="card_atras">
+                <img class="icon" src="../assets/imgs/icons/billete.png" item-start>
+                <a class="blanco_2">Propina</a>
+                <ion-badge item-end>  {{corte.propina | currency}} </ion-badge>
+            </ion-item>
+            <ion-item class="card_atras">
+                <img class="icon" src="../assets/imgs/icons/billete.png" item-start>
+                <a class="blanco_2">Total + Propina</a>
+                <ion-badge item-end>  {{corte.propina + corte.totalCorte | currency}} </ion-badge>
+            </ion-item>
+
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

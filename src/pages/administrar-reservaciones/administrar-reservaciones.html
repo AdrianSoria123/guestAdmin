@@ -1,0 +1,241 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Gestion de reservaciones</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo_admin" padding>
+    <ion-card class="card">
+        <ion-card-header class="header">
+            <ion-item-divider color="light">Reservaciones</ion-item-divider>
+        </ion-card-header>
+        <div *ngFor="let reservacion of reservaciones">
+            <div *ngFor="let user of usuarios">
+                <div *ngIf="reservacion.idUsuario==user.uid && reservacion.estatus == 'Creando'" class="espacio">
+                    <ion-row >
+                        <ion-col col-2 text-center>
+                            <ion-icon name="ios-book" style="background-color: gold;"></ion-icon>
+                        </ion-col>
+                        <ion-col>
+                            {{user.displayName}} <br>{{reservacion.hora}}
+                        </ion-col>
+                        <ion-col col-2 text-center>
+                            <!-- {{reservacion.fechaR}} -->
+                            {{ reservacion.fechaR | date : 'dd/MM/yyyy'}}
+                        </ion-col>
+                        <ion-col col-1 text-center>
+                            {{reservacion.numPersonas}}
+                        </ion-col>
+                        <ion-col col-1 text-center (click)="consultaReservacion(reservacion.idReservacion)">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                        </ion-col>
+                        <!-- <ion-col col-2 text-center (click)="adminReservacion(reservacion.idReservacion)"> -->
+                        <!-- <ion-col col-2 text-center (click)="verCroquis(reservacion.idReservacion, reservacion.idSucursal)">
+                                <button class="btn">Croquis</button>
+                        </ion-col> -->
+                    </ion-row>
+                </div>
+                <div *ngIf="reservacion.idUsuario==user.uid && reservacion.estatus == 'CreadaCompartida'" class="espacio">
+                    <ion-row >
+                        <ion-col col-2 text-center>
+                            <ion-icon name="ios-book" style="background-color: gold;"></ion-icon>
+                        </ion-col>
+                        <ion-col>
+                            {{user.displayName}} <br>{{reservacion.hora}}
+                        </ion-col>
+                        <ion-col col-2 text-center>
+                            <!-- {{reservacion.fechaR}} -->
+                            {{ reservacion.fechaR | date : 'dd/MM/yyyy'}}
+                        </ion-col>
+                        <ion-col col-1 text-center>
+                            {{reservacion.numPersonas}}
+                        </ion-col>
+                        <ion-col col-1 text-center (click)="consultaReservacion(reservacion.idReservacion)">
+                            <ion-icon name="arrow-round-forward"></ion-icon>
+                        </ion-col>
+                        <!-- <ion-col col-2 text-center (click)="adminReservacion(reservacion.idReservacion)"> -->
+                        <!-- <ion-col col-2 text-center (click)="verCroquis(reservacion.idReservacion, reservacion.idSucursal)">
+                                <button class="btn">Croquis</button>
+                        </ion-col> -->
+                    </ion-row>
+                </div>
+            </div>
+        </div>
+    </ion-card>
+    <div class="panelReserv" [hidden]="estatus2==true">
+            <!-- <div *ngFor="let usuario of usuarios">
+                <div >
+                    <img id="imgS" src="https://firebasestorage.googleapis.com/v0/b/guestreservation-8b24b.appspot.com/o/croquis%2FJDJgepeCbM4Kp7XB8i2A?alt=media&token=21db3258-e871-4fb7-ab88-6e07fd2cd7fa" alt="your image" />
+                </div>
+            </div> -->
+
+            <div *ngFor="let img of imagenList; ">
+                <img id="imgS" src="{{img.imagenes}}" alt="your image" />
+                <!-- {{img.imagenes}} -->
+            </div>
+
+    </div>
+
+    <div class="panelReserv" [hidden]="estatus==true">
+        <div *ngFor="let usuario of usuarios">
+            <div *ngIf="usuario.uid == reserv.idUsuario">
+                <ion-row class="title">
+                    {{usuario.displayName}}
+                </ion-row>
+                <!-- <ion-row>
+                    <ion-col col-2 text-center (click)="verCroquis()">
+                        <button class="btn">Croquis</button>
+                    </ion-col>
+
+                </ion-row> -->
+                <ion-row class="row1">
+                    <ion-col col-3>
+                        <ion-icon ios="ios-clock" md="md-clock" class="icono"></ion-icon>&emsp;{{reserv.hora}}
+                    </ion-col>
+                    <ion-col col-3>
+                        <ion-icon ios="ios-people" md="md-people" class="icono"></ion-icon>&emsp;{{reserv.numPersonas}}
+                    </ion-col>
+                    <ion-col text-right class="pad">
+                        <ion-icon ios="ios-call" md="md-call" class="icono"></ion-icon>&emsp;{{usuario.phoneNumber}}
+                    </ion-col>
+                </ion-row>
+                <br>
+                <br>
+
+                <!-- <ion-row class="row1">
+                    <ion-col>
+                        <h4>Mesa:</h4>
+                            <ion-icon ios="ios-menu" md="md-menu" class="icono"></ion-icon>&emsp; 1
+                            {{reserv.numMesa}}
+                    </ion-col>
+                </ion-row> -->
+                <br><br>
+
+                <ion-row class="row1">
+                    <!--<ion-col text-center (click)="modZonaMesa(reserv.uid, reserv.idSucursal, reserv.idArea, reserv.idZona)">
+                        <h3>Area: </h3>
+                        <ion-icon ios="ios-menu" md="md-menu" class="icono"></ion-icon>&emsp;{{area.nombre}}
+                    </ion-col>-->
+                    <ion-col text-center>
+                        <h3>Zona: </h3>
+                        <ion-icon ios="ios-apps" md="md-apps" class="icono"></ion-icon>&emsp;{{zona.nombre}}
+                    </ion-col>
+
+                    <ion-col text-center>
+                        <h3>Total: </h3>
+                        <ion-icon ios="ios-apps" md="md-apps" class="icono"></ion-icon>&emsp; {{ totalReserv }}
+                    </ion-col>
+                    
+                </ion-row>
+
+                <br>
+                <br>
+                <ion-row class="row1">
+                    <ion-col (click)="modStatus(reserv.idReservacion, reserv.idSucursal)">
+                        <h4>Estado de la reservación: </h4>
+                        <ion-icon ios="ios-book" md="md-book" class="icono"></ion-icon>&emsp;{{reserv.estatus}}
+                    </ion-col>
+
+                    <ion-col >                    
+                        <img class="icon" height="40px" width="40px" src="../assets/imgs/icons/mesa.png" item-start>
+                            {{ reserv.numMesa }}
+                    </ion-col>
+                </ion-row>
+                <br><br>
+
+                <ion-row class="row1">
+                    <ion-col text-center (click)="modStatus_cancelacion(reserv.idReservacion, reserv.idSucursal)">
+                    <!-- <ion-col text-center (click)="Cancelar(reserv.uid)"> -->
+                        <!-- <ion-icon ios="ios-close-circle" md="md-close-circle" class="icono"></ion-icon>
+                        Cancelar Reservación -->
+                        <button ion-button color="danger" outline>Cancelar Reservación</button>
+                    </ion-col>
+                    <ion-col text-center (click)="Aceptar(reserv.uid)">
+                        <!-- <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" class="icono"></ion-icon>
+                        Aceptar Reservación -->
+                        <button ion-button color="secondary" outline>Aceptar Reservación</button>
+                    </ion-col>
+                </ion-row>
+                <br><br>
+
+                <ion-row class="title2">
+                    <ion-col text-center>
+                        <ion-item-divider color="light">Compartida con</ion-item-divider>
+                    </ion-col>
+                </ion-row>
+
+                <div *ngFor="let compartida of compartidas" >
+                    <div *ngFor="let user of usuarios">
+                            <div *ngIf="compartida.idUsuario==user.uid" class="espacio">
+                            <ion-row >
+                                <ion-col col-2 text-center>
+                                    <ion-icon name="ios-person" style="background-color: gold;"></ion-icon>
+                                </ion-col>
+                                <ion-col col-3 text-center>
+                                    {{user.displayName}}
+                                </ion-col>
+                                <ion-col col-2 text-center >
+                                   $ {{compartida.totalDividido}}
+                                </ion-col>
+                            </ion-row>
+                        
+                            </div>
+                    </div>
+                </div>
+                <br><br>
+
+
+
+                
+                <ion-row class="title2">
+                    <ion-col text-center>
+                        <ion-item-divider color="light">Historial de Reservaciones</ion-item-divider>
+                    </ion-col>
+                </ion-row>
+                <div *ngIf="res==true">
+                    <ion-grid class="title3">
+                        <ion-row>
+                            <ion-col text-center>
+                                Establecimiento
+                            </ion-col>
+                            <ion-col text-center>
+                                Fecha
+                            </ion-col>
+                            <ion-col text-center>
+                                Hora
+                            </ion-col>
+                            <ion-col text-center>
+                                Puntuación
+                            </ion-col>
+                        </ion-row>
+                        <ion-row class="row1" *ngFor="let history of historial">
+                            <ion-col text-center>
+                                <div *ngFor="let sucursal of sucursales">
+                                    <div *ngIf="sucursal.$key==history.idSucursal">
+                                        {{sucursal.displayName}}
+                                    </div>
+                                </div>
+                            </ion-col>
+                            <ion-col text-center>
+                                {{history.fechaR | date : 'dd/MM/yyyy'}}
+                            </ion-col>
+                            <ion-col text-center>
+                                {{history.hora}}
+                            </ion-col>
+                            <ion-col text-center>
+                                {{history.puntuacion}} 5
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+                <div *ngIf="res==false">
+                    <ion-row class="row1">
+                        <ion-col text-center class="col1">
+                            El cliente no tiene reservaciones previas
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

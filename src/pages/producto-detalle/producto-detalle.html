@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <div text-center>
+            <ion-title>{{product.titulo}}</ion-title>
+        </div>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+    <ion-card>
+        <img [src]="product.img" />
+        <div class="card-title">
+            <ion-badge id="color-nota" item-end id="badge-titulo">
+                <div text-wrap>
+                    {{product.nota}}
+                </div>
+            </ion-badge>
+        </div>
+        <div class="card-subtitle">
+            <ion-badge color="dark" item-end id="badge-stitulo">{{product.precio | currency}}
+            </ion-badge>
+        </div>
+    </ion-card>
+    <ion-grid id="pisto">
+        <ion-row>
+            <ion-col col-4>
+                <div text-right>
+                    <img src="assets/imgs/icons/-.png" id="mas_menos" (click)="decrement(); validarBoton();">
+                </div>
+            </ion-col>
+            <ion-col col-4 id="caja">
+                <div class="caja" text-center>
+                    <span>{{pisto}}</span>
+                </div>
+            </ion-col>
+            <ion-col col-4>
+                <div text-rigth>
+                    <img src="assets/imgs/icons/+.png" id="mas_menos" (click)="increment(); validarBoton();">
+                </div>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <div text-center>
+                    <button ion-button round block color="dark" (click)="(agregar())" [disabled]="disableButton">Agregar</button>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-12>
+                    <div text-center>
+                        <button ion-button round block color="dark" (click)="(goBack())">Atras</button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

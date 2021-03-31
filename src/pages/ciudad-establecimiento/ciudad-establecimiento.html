@@ -1,0 +1,30 @@
+
+<ion-header class="esquina">
+    <ion-navbar>
+       <ion-row >
+         <ion-col>
+            <button ion-fab class="colorfab" (click)="goBack()"><ion-icon name="arrow-back" class="colorI" style="zoom:1.0;"></ion-icon></button>
+         </ion-col>
+         <ion-col>
+             <ion-title class="texto-alineado"><h6>Ciudades registradas</h6></ion-title>
+         </ion-col>
+         <ion-col>
+         </ion-col>
+       </ion-row>
+    </ion-navbar>
+</ion-header>
+<ion-content class="fondo_admin">
+    <ion-card-header class="marg" color="light">
+      <button (click)="agregarCiudad()" text-align ion-button clear small color="light" icon-left item-end>
+          <img class="iconMas" src="../assets/imgs/icons/mas.png" item-start>
+         Agregar Ciudad
+      </button>
+    </ion-card-header>
+    <ion-list class="card_atras" *ngFor="let ciud of ciudades">
+      <ion-item>
+          <img class="icon" src="../assets/imgs/icons/antro.png" item-start>
+           <a class="blanco_2">{{ ciud.ciudad }}</a>
+          <ion-badge color="naranja" item-end>Agregada</ion-badge>
+      </ion-item>
+    </ion-list>
+</ion-content>

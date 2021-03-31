@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>resumen</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="_card">
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-3>
+                        <div text-center text-uppercase class="text_color">
+                            {{mes}}
+                        </div>
+                        <div text-center class="text_color">
+                            <b>{{diasN}}</b>
+                        </div>
+                        <div text-center class="text_color">
+                            {{dias}}
+                        </div>
+                    </ion-col>
+                    <ion-col col-9>
+                        <div class="sucursal">
+                            Aromas
+                        </div>
+                        <br>
+                        <div class="">
+                            Reservación para {{r.numPersonas}} personas
+                        </div>
+                        <br>
+                        <div text-uppercase>{{r.hora}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+
+    </ion-card>
+</ion-content>

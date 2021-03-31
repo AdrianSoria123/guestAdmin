@@ -1,0 +1,42 @@
+
+<ion-header>
+    <ion-navbar hideBackButton>
+       <ion-row >
+         <ion-col>
+            <ion-icon (click)="(goBack())" name="arrow-back" style="color:#6C6A6A; zoom:1.3;margin-top:6%;margin-left: 20%;"></ion-icon>
+         </ion-col>
+         <ion-col>
+             <ion-title class="texto-alineado">Sucursales</ion-title>
+         </ion-col>
+         <ion-col>
+         </ion-col>
+       </ion-row>
+    </ion-navbar>
+</ion-header>
+<!--<ion-header>
+  <ion-navbar>
+    <ion-icon (click)="(goBack())" name="arrow-back" style="color:#858484; zoom:1.3;margin-top:8%;margin-left: -1%;"></ion-icon>
+    <ion-title>Sucursales</ion-title>
+  </ion-navbar>
+</ion-header>-->
+<ion-content class="fondo_admin">
+    <ion-card-header class="marg" color="light">Lista de sucursales</ion-card-header>
+    <ion-list class="card_atras" *ngFor="let sucursal of sucursales">
+        <ion-item (click)="adminSucursal(sucursal.uid)">
+            <ion-thumbnail item-start>
+                <img [src]="sucursal.photoURL">
+            </ion-thumbnail>
+            <h2>{{sucursal.displayName}}</h2>
+            <p> {{ sucursal.direccion }} </p>
+            <p> {{ sucursal.ciudad }} </p>
+        </ion-item>
+    </ion-list>
+    <ion-fab left bottom>
+        <button ion-fab color="light"><ion-icon name="paper"></ion-icon></button>
+        <ion-fab-list side="right">
+            <button ion-fab (click)="mostrar_modal()">
+              <ion-icon name="pin"></ion-icon>
+              </button>
+        </ion-fab-list>
+    </ion-fab>
+</ion-content>

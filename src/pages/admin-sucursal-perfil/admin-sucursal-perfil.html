@@ -1,0 +1,177 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Perfil</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="fondo_admin" *ngFor="let sucursal of sucursales">
+    <ion-item>
+        <!-- <ion-badge (click)="goEditArquitectura(sucursal.uid)" class="fon3" item-end>EDITAR ARQUITECTURA</ion-badge> -->
+    </ion-item>
+    <ion-item class="he">
+      <ion-badge *ngIf="usertipo != 'master'" (click)="goEditPerfil(sucursal)" class="fon3" item-end>EDITAR MI INFORMACIÓN DE PERFÍL</ion-badge>
+    </ion-item>
+    <ion-item class="he">
+        <ion-badge (click)="goCorteVentas(sucursal)" class="fon3" item-end>Corte</ion-badge>
+    </ion-item>
+    <ion-item class="he">
+        <ion-badge (click)="goCorteHistorial(sucursal)" class="fon3" item-end>Historial Corte</ion-badge>
+    </ion-item>
+
+    <h3 text-center class="blanco"> Información de la sucursal</h3>
+    <ion-grid class="margen">
+
+        <ion-row>
+            <ion-col>
+                <img src="./assets/imgs/Logoblanco.png">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-list no-lines class="margen_2">
+        <ion-item text-center>
+            <!--Filtro de bandera de usuario-->
+            <!-- <div class="filt">
+                <img class="cate" src="../assets/imgs/icons/gold_guest.png" item-start>
+            </div> -->
+            <!--Imagen del usuario-->
+            <ion-item *ngIf="sucursal.status == 'activo'">
+                <h4>Estado: </h4>
+                <ion-badge class="fon" item-end>Activo</ion-badge>
+            </ion-item>
+            <ion-item *ngIf="sucursal.status == 'falso'">
+                <h4>Estado: </h4>
+                <ion-badge class="fon2" item-end>Inhabilitado</ion-badge>
+
+            </ion-item>
+            <div class="">
+                <img class="imagen_perfil" [src]="sucursal.photoURL">
+                <ion-badge (click)="goEditPerfilImagen(sucursal.uid)" class="edit_pho">
+                    <ion-icon name="md-brush" ios="ios-outline" md="md-brush"></ion-icon>
+                </ion-badge>
+            </div>
+        </ion-item>
+        <ion-item>
+            <img class="icon" src="../assets/imgs/icons/profile.png" item-start>
+            <div class="margen3">
+                <h4> Nombre:</h4> {{sucursal.displayName}}</div>
+        </ion-item>
+        <ion-item>
+            <img class="icon" src="../assets/imgs/icons/correo.png" item-start>
+            <div class="margen3">
+                <h4>Correo:</h4>{{ sucursal.email}}</div>
+        </ion-item>
+        <ion-item>
+            <img class="icon" src="../assets/imgs/icons/contacto.png" item-start>
+            <div class="margen3">
+                <h4>Contacto:</h4>{{ sucursal.contacto }}</div>
+        </ion-item>
+        <ion-item>
+            <img class="icon" src="../assets/imgs/icons/telefono.png" item-start>
+            <div class="margen3">
+                <h4>Teléfono:</h4> {{ sucursal.tel }} </div>
+        </ion-item>
+        <ion-item>
+            <img class="icon" src="../assets/imgs/icons/home.png" item-start>
+            <div class="margen3">
+                <h4>Dirección:</h4>{{ sucursal.direccion }}</div>
+        </ion-item>
+
+        <ion-item>
+            <img *ngIf="sucursal.tipo == 'antro' " class="icon" src="../assets/imgs/icons/antro.png" item-start>
+            <img *ngIf="sucursal.tipo == 'bar' " class="icon" src="../assets/imgs/icons/bar.png" item-start>
+            <img *ngIf="sucursal.tipo == 'restaurante' " class="icon" src="../assets/imgs/icons/restaurante.png" item-start>
+            <div class="margen3">
+                <h4>Giro</h4>{{ sucursal.tipo }}
+            </div>
+        </ion-item>
+        <br><br><br>
+        <h4 text-center class="blanco_2"> Croquis de la sucursal</h4>
+        <ion-card class="card_atras">
+            <ion-card-content class="card_atras">
+              <div *ngFor="let sucur of sucursal_croquis">
+                <div class="warning">
+                    <img *ngIf="sucur.imagenes != null" class="imagen_croquis" [src]="sucur.imagenes" (click)="goEditImagenCroquis(sucursal.uid)">
+                    <!-- <ion-badge (click)="goEditImagenCroquis(sucursal.uid)" class="edit_pho">
+                        <ion-icon name="md-brush" ios="ios-outline" md="md-brush"></ion-icon>
+                    </ion-badge> -->
+                </div>
+              </div>
+
+                <ion-card-title>
+                    <ion-row>
+                        <ion-col>
+                            <h4 class="blanco_2">Áreas</h4>
+                        </ion-col>
+                        <ion-col col-2>
+                            <img class="icon" src="../assets/imgs/icons/mas.png" item-start (click)="agregarArea(sucursal.uid)">
+                        </ion-col>
+                    </ion-row>
+                </ion-card-title>
+                <div *ngFor="let area of areas">
+                    <!-- {{area | json}} -->
+                    <ion-row>
+                        <ion-col>
+                            <p class="blanco_2">
+                                {{area.nombre}}
+                            </p>
+                        </ion-col>
+                        <ion-col col-1>
+                            <!-- <img class="icon1" src="../assets/imgs/icons/mas.png" item-start (click)="agregarZona(area.key)"> -->
+                            <ion-icon name="md-add" (click)="agregarZona(area.id, sucursal.uid)"></ion-icon>
+                        </ion-col>
+                        <ion-col col-1>
+                            <ion-icon name="md-brush" (click)="modificaArea(area.id, area.nombre)"></ion-icon>
+                        </ion-col>
+                        <ion-col col-1>
+                            <ion-icon name="md-trash" (click)="eliminarArea(area.id)"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                    <div *ngFor="let zona of zonas">
+                        <div *ngIf="area.id==zona.uidArea">
+                            <ion-item-sliding class="card_atras">
+                                <ion-item class="card_atras">
+                                    <img class="icon1" src="../assets/imgs/icons/home.png" item-start>
+                                    <p class="blanco_2">{{zona.nombre}} - {{zona.consumo}}</p>
+                                </ion-item>
+                                <ion-item-options class="card_atras" side="right">
+                                    <button ion-button color="dark" (click)="agregarMesa(sucursal.uid,area.id,zona.id)">
+                                        <ion-icon name="md-add"></ion-icon>
+                                        Agregar
+                                    </button>
+                                    <button ion-button color="dark" (click)="eliminarZona(zona.id)">
+                                        <ion-icon name="md-trash"></ion-icon>
+                                        Eliminar
+                                    </button>
+                                    <button ion-button color="dark" (click)="modificaZona(zona.id, zona.nombre, zona.consumo)">
+                                        <ion-icon name="md-brush"></ion-icon>
+                                        Editar
+                                    </button>
+                                </ion-item-options>
+                            </ion-item-sliding>
+                            <div>
+                                <ion-item class="card_atras" (click)="adminMesas(area.id, zona.id)">
+                                    <img class="icon2" src="../assets/imgs/mesa.png" item-start>
+                                    <p class="blanco_2">Administrar Mesas</p>
+                                </ion-item>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <ion-item footer>
+          <button *ngIf="usertipo == 'master'" ion-button color="dark" (click)="eliminarSucursal(sucursal.uid)">
+              Eliminar Sucursal
+          </button>
+          <!--  <button ion-button (click)="logout()" color="dark" block>
+        Cerrar Sesión
+      </button>-->
+        </ion-item>
+
+    </ion-list>
+</ion-content>

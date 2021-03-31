@@ -1,0 +1,64 @@
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Eventos</ion-title>
+    </ion-navbar>
+    <ion-item text-right class="card_atras">
+        <ion-label>
+            <ion-icon ios="ios-list" md="md-list"></ion-icon>
+        </ion-label>
+        <ion-select [(ngModel)]="filterPost" interface="popover">
+            <ion-option value="Deportivo">Deportivo</ion-option>
+            <ion-option value="Cultural">Cultural</ion-option>
+            <ion-option value="Académico">Académico</ion-option>
+            <ion-option value="Recreativo">Recreativo</ion-option>
+            <ion-option value="Social">Social</ion-option>
+            <ion-option value="Festival">Festival</ion-option>
+            <ion-option value="Homenaje">Homenaje</ion-option>
+            <ion-option value="Reconocimiento">Reconocimiento</ion-option>
+            <ion-option value="Feria">Feria</ion-option>
+            <ion-option value="Cumpleaños">Cumpleaños</ion-option>
+            <ion-option value="Familiy">Familiy Day</ion-option>
+            <ion-option value="Simposio">Simposio</ion-option>
+            <ion-option value="Otro">Otro</ion-option>
+            <ion-option value="">Todos</ion-option>
+        </ion-select>
+    </ion-item>
+</ion-header>
+
+
+<ion-content class="card-background-page">
+    <!-- pipesFilterEvento -->
+    <ion-card class="card_atras" *ngFor="let evento of eventos | pipesFilterEvento: filterPost">
+        <img [src]="evento.img" />
+        <ion-row>
+            <ion-title color="light">{{ evento.titulo }}</ion-title>
+            <ion-row>
+                <ion-col mr-5 text-right>
+                    <!-- 
+                     Compartir
+                  </button> -->
+                    <ion-fab class="btnshare">
+                        <button ion-fab color="dark"><ion-icon name="ios-share-alt"></ion-icon></button>
+                        <ion-fab-list side="top">
+                            <button class="fabbtn" ion-fab (click)="compartir(evento)">
+                            <img  src="../assets/imgs/icons/facebook.png"></button>
+                            <!-- <button class="fabbtn" ion-fab (click)="compartirInsta(evento)">
+                                <img  src="../assets/imgs/icons/insta.png"></button> -->
+                        </ion-fab-list>
+                    </ion-fab>
+                </ion-col>
+            </ion-row>
+
+            <ion-col text-right>
+                <button (click)="verDetalle(evento.uid, evento.uidSucursal)" text-align ion-button clear small color="light" icon-left>
+              <img class="icon" src="../assets/imgs/icons/mas.png">
+                Más
+          </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

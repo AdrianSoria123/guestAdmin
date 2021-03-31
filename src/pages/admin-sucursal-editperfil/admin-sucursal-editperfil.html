@@ -1,0 +1,75 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Editar Perfil</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo_admin" padding>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Nombre del contacto</ion-label>
+            <ion-input type="text" [(ngModel)]="sucProv.selectedSucursalItem.contacto"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Nombre sucursal</ion-label>
+            <ion-input type="text" [(ngModel)]="sucProv.selectedSucursalItem.displayName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Teléfono</ion-label>
+            <ion-input type="phone" [(ngModel)]="sucProv.selectedSucursalItem.tel"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Dirección</ion-label>
+            <ion-input type="text" [(ngModel)]="sucProv.selectedSucursalItem.direccion"></ion-input>
+        </ion-item>
+
+        <!-- <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="credentials.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
+        </ion-item> -->
+
+        <ion-item class="fond">
+            <ion-label>Tipo de sucursal</ion-label>
+            <ion-select [(ngModel)]="sucProv.selectedSucursalItem.tipo" class="fond">
+                <ion-option value="bar">Bar</ion-option>
+                <ion-option value="antro">Antro</ion-option>
+                <ion-option value="restaurante">Restaurante</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-row style="background-color: #000000; color:#fff;" text-center>
+            <ion-label>Información para el usuario</ion-label>
+        </ion-row>
+        <ion-item>
+            <ion-textarea class="fond" placeholder="Descriipción del horario de su sucursal." [(ngModel)]="sucProv.selectedSucursalItem.horas" name="horas" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-textarea class="fond" placeholder="Descripción de servicio de estacionamiento" [(ngModel)]="sucProv.selectedSucursalItem.estacionamiento" name="estacionamiento" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-textarea class="fond" placeholder="Descripción de código de etiqueta" [(ngModel)]="sucProv.selectedSucursalItem.codigoEtiqueta" name="etiqueta" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-textarea class="fond" placeholder="Descripción de la sucursal" [(ngModel)]="sucProv.selectedSucursalItem.descripcion" name="descripcion" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+
+    </ion-list>
+    <ion-row>
+        <ion-col>
+            <button class="md-trash" color="dark" ion-button block (click)="savePerfil()">Guardar edición</button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <button class="md-trash" color="dark" ion-button block (click)="changePass(sucProv.selectedSucursalItem.email)">Restablecer/Cambiar Contraseña</button>
+        </ion-col>
+    </ion-row>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title></ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-row>
+    <ion-col class="top-20">
+      <img src="./assets/imgs/Logoblanco.png">
+    </ion-col>
+  </ion-row>
+    <ion-list class="atras">
+        <ion-item class="atras">
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)] = "credentials.email"></ion-input>
+        </ion-item>
+        <ion-item class="atras">
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" [(ngModel)] = "credentials.password"></ion-input>
+        </ion-item>
+        <ion-item class="atras" text-center>
+            <button class="blanco" ion-button round style="min-width: 200px; padding: 10px 16px" (click) = "login()" >Login</button>
+        </ion-item>
+        <!-- <ion-item text-center>
+            <p tappable (click) = "register()"> Dont't have account? Register </p>
+        </ion-item> -->
+    </ion-list>
+</ion-content>

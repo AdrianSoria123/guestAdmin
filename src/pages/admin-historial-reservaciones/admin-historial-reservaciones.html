@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Historial de reservaciones</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="list-avatar-page fondo_admin">
+    <ion-list *ngIf="reservaciones.length != 0">
+        <ion-item *ngFor="let reservacion of reservaciones">
+            <ion-avatar item-start>
+                <img src="../assets/imgs/icons/book.png">
+            </ion-avatar>
+            <ng-container *ngFor="let cliente of clientes">
+                <h2 *ngIf="cliente.uid == reservacion.idUsuario">{{ cliente.displayName }} </h2>
+            </ng-container>
+            <!--<p>{{ reservacion.estatus }} </p>-->
+            <p>Folio: {{ reservacion.folio}} </p>
+            <p *ngIf="reservacion.estatus == 'Pagando'"> Pagada</p>
+            <p>{{ reservacion.fechaR }} </p>
+            <ion-note item-end>{{ reservacion.hora }} </ion-note>
+            <button ion-button color="dark" round (click)="goDetalle(reservacion.idReservacion)">
+                 Detalle
+            </button>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="reservaciones.length == 0">
+        <ion-card>
+            <div text-center>
+                <img text-center class="adv" src="../assets/imgs/icons/advertencia.png" />
+            </div>
+            <ion-card-content>
+                <ion-card-title text-center>
+                    Aviso
+                </ion-card-title>
+                <p>
+                    Por el momento no hay reservaciones.
+                </p>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,105 @@
+page-admin-home {
+    .atras {
+        background: -moz-linear-gradient(top, rgba(69, 72, 77, 1) 0%, rgba(68, 71, 75, 0.05) 2%, rgba(0, 0, 0, 1) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(69, 72, 77, 1) 0%, rgba(68, 71, 75, 0.05) 2%, rgba(0, 0, 0, 1) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(69, 72, 77, 1) 0%, rgba(68, 71, 75, 0.05) 2%, rgba(0, 0, 0, 1) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        //filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000', GradientType=0);
+        /* IE6-9 */
+        //color: #fff;
+    }
+    .centrar {
+        text-align: center;
+        color: #fff;
+    }
+    h2 {
+        color: #ffff;
+        text-align: center;
+    }
+    .foo {
+        text-align: left;
+        background-color: transparent;
+        color: white;
+    }
+    .hea {
+        height: 75px;
+        width: 300px;
+        text-align: right;
+        color: white;
+    }
+    .suc {
+        height: 15px;
+        width: 15px;
+    }
+    // grids
+    ion-col div {
+        background-color: #000000;
+        // border: 1px solid #e6e9ee;
+        border-radius: 2px;
+        padding: 5px;
+        text-align: center;
+    }
+    .cl {
+        border: none;
+        background: #000000;
+        color: #fff;
+    }
+    .cl2 {
+        border: none;
+        background: #FBCC0C;
+        color: #fff;
+        border-radius: 25px;
+    }
+    h4 {
+        padding: 10px 0 0 10px !important;
+        margin: 0;
+    }
+    .foo2 {
+        text-align: left;
+        background-color: transparent;
+        color: white;
+        margin-top: 100%;
+    }
+    .textoNombre {
+        text-align: left;
+        background-color: transparent;
+        color: white;
+        margin-top: -10%;
+        margin-left: 12%;
+    }
+    .textoNombre2 {
+        text-align: left;
+        background-color: transparent;
+        color: white;
+        margin-top: -5%;
+        margin-left: 12%;
+    }
+    .textoNombre3 {
+        text-align: left;
+        background-color: transparent;
+        color: white;
+        margin-top: -12%;
+        margin-left: 12%;
+    }
+    .textoNombre4 {
+        text-align: left;
+        background-color: transparent;
+        color: white;
+        margin-top: -6%;
+        margin-left: 12%;
+    }
+    .blanco{
+      color: #ffffff;
+      font: bold;
+      font-weight: 900;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+100,f6f6f6+100,e1e1e1+100&0.5+0,0.5+100 */
+    background: -moz-linear-gradient(-45deg, rgba(255,255,255,0.5) 0%, rgba(241,241,241,0.5) 50%, rgba(225,225,225,0.5) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(255,255,255,0.5) 0%,rgba(241,241,241,0.5) 50%,rgba(225,225,225,0.5) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%,rgba(241,241,241,0.5) 50%,rgba(225,225,225,0.5) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#80e1e1e1',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    border-radius: 10px;
+
+    }
+}

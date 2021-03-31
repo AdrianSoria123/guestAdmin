@@ -1,0 +1,120 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Usuarios</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo_admin">
+  <div *ngIf="home != 'home' ">
+    <div class="fondo">
+        <ion-searchbar placeholder="Buscar" [animated]="true" (ionInput)="getItems($event)"></ion-searchbar>
+        <ion-segment selectedIndex="1" [(ngModel)]="user">
+            <!-- <ion-segment-button value="administrador">
+                <h5>Administradores</h5>
+            </ion-segment-button> -->
+            <ion-segment-button value="empleado">
+                <h5>Empleados</h5>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    </div>
+    <div *ngIf="home == 'home' ">
+    <div class="fondo">
+        <ion-searchbar [animated]="true" (ionInput)="getItems2($event)"></ion-searchbar>
+        <ion-segment selectedIndex="1" [(ngModel)]="user">
+            <!-- <ion-segment-button value="administrador">
+                <h5>Administradores</h5>
+            </ion-segment-button> -->
+            <ion-segment-button value="empleado">
+                <h5>Empleados</h5>
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+   </div>
+    <div [ngSwitch]="user">
+        <div *ngIf="home != 'home'">
+        <div *ngFor="let admin of admins">
+            <ion-list class="list_blanco_transp" *ngSwitchCase="'empleado'">
+                <ion-item *ngIf="admin.type == 'e' || admin.type == 'coordinacion' || admin.type == 'rp' || admin.type == 'capitan_mesero'" (click)="selectUsuario(admin.uid, admin.active)">
+                    <ion-thumbnail item-start>
+                        <img src="../assets/imgs/icons/profile.png">
+                    </ion-thumbnail>
+                    <h6>
+                        Nombre: {{ admin.displayName }}
+                    </h6>
+                    <h6>
+                        <div *ngIf="admin.type == 'e'">Tipo: Empleado</div>
+                        <div *ngIf="admin.type == 'coordinacion'">Tipo: Coordinación</div>
+                        <div *ngIf="admin.type == 'rp'">Tipo: RP</div>
+                        <div *ngIf="admin.type == 'capitan_mesero'">Tipo: Capitán de meseros</div>
+
+                    </h6>
+                    <!--<h6>
+                        ID
+                        <p class="p">{{ admin.uid }}</p>
+                    </h6>-->
+                    <ion-badge *ngIf="admin.active == 'false' " class="fondo" item-end>Inhabilitado</ion-badge>
+                </ion-item>
+            </ion-list>
+        </div>
+        </div>
+        <div *ngIf="home == 'home' ">
+        <div *ngFor="let admin of admins2">
+            <ion-list class="list_blanco_transp" *ngSwitchCase="'empleado'">
+                <ion-item *ngIf="admin.type == 'e' || admin.type == 'coordinacion' || admin.type == 'rp' || admin.type == 'capitan_mesero'" (click)="selectUsuario(admin.uid, admin.active)">
+                    <ion-thumbnail item-start>
+                        <img src="../assets/imgs/icons/profile.png">
+                    </ion-thumbnail>
+                    <h6>
+                        Nombre
+                        <p class="p">{{ admin.displayName }}</p>
+                    </h6>
+                    <h6>
+                        Tipo
+                        <div *ngIf="admin.type == 'e'"><p class="p">Empleado</p></div>
+                        <div *ngIf="admin.type == 'coordinacion'"><p class="p">Coordinación</p></div>
+                        <div *ngIf="admin.type == 'rp'"><p class="p">RP</p></div>
+                        <div *ngIf="admin.type == 'capitan_mesero'"><p class="p">Capitán de meseros</p></div>
+                    </h6>
+                    <h6>
+                        ID
+                        <p class="p">{{ admin.uid }}</p>
+                    </h6>
+                    <ion-badge *ngIf="admin.active == 'false' " class="fondo" item-end>Inhabilitado</ion-badge>
+                </ion-item>
+            </ion-list>
+        </div>
+        </div>
+        <!-- <div *ngFor="let admin of admins">
+            <ion-list class="list_blanco_transp" *ngSwitchCase="'administrador'">
+                <ion-item *ngIf="admin.type == 'a' " (click)="selectUsuario(admin.uid)">
+                    <ion-thumbnail item-start>
+                        <img class="border" src="../assets/imgs/icons/profile.png">
+                    </ion-thumbnail>
+                    <h6>
+                        Nombre
+                        <p class="p">{{ admin.displayName }}</p>
+                    </h6>
+
+                    <h6>
+                        ID
+                        <p class="p">{{ admin.uid }}</p>
+                    </h6>
+                </ion-item>
+            </ion-list>
+        </div> -->
+    </div>
+    <div *ngIf="home != 'home' ">
+    <ion-fab left bottom>
+        <button ion-fab color="light"><ion-icon name="contacts"></ion-icon></button>
+        <ion-fab-list side="right">
+            <button ion-fab (click)="mostrar_modal()">
+              <ion-icon name="md-person-add"></ion-icon>
+              </button>
+        </ion-fab-list>
+    </ion-fab>
+</div>
+</ion-content>

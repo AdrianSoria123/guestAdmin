@@ -1,0 +1,72 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Agregar Ciudad</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="myForm" novalidate class="">
+   <ion-list>
+     <ion-item>
+       <ion-label class="blanco_1">Ciudad</ion-label>
+       <ion-select [(ngModel)]="ciudad" multiple="false" cancelText="Cancelar" okText="Aceptar" name="ciudad" formControlName="ciudad">
+           <div>
+             <ion-option value="León">León</ion-option>
+             <ion-option value="Aguascalientes">Aguascalientes</ion-option>2
+             <ion-option value="Mexicali">Mexicali</ion-option>
+             <ion-option value="Tijuana">Tijuana</ion-option>
+             <ion-option value="Campeche">Campeche</ion-option>
+             <ion-option value="Saltillo">Saltillo</ion-option>
+             <ion-option value="Manzanillo">Manzanillo</ion-option>
+             <ion-option value="Chihuahua">Chihuahua</ion-option>
+             <ion-option value="Durango">Durango</ion-option>
+             <ion-option value="Celaya">Celaya</ion-option>
+             <ion-option value="Guanajuato">Guanajuato</ion-option>
+             <ion-option value="Irapuato">Irapuato</ion-option>
+             <ion-option value="Salamanca">Salamanca</ion-option>
+             <ion-option value="Acapulco">Acapulco</ion-option>
+             <ion-option value="Pachuca">Pachuca</ion-option>
+             <ion-option value="Guadalajara">Guadalajara</ion-option>
+             <ion-option value="Toluca">Toluca</ion-option>
+             <ion-option value="Morelia">Morelia</ion-option>
+             <ion-option value="Uruapan">Uruapan</ion-option>
+             <ion-option value="Cuernavaca">Cuernavaca</ion-option>
+             <ion-option value="Tepic">Tepic</ion-option>
+             <ion-option value="Monterrey">Monterrey</ion-option>
+             <ion-option value="Oaxaca">Oaxaca</ion-option>
+             <ion-option value="Querétaro">Querétaro</ion-option>
+             <ion-option value="Cancún">Cancún</ion-option>
+             <ion-option value="Chetumal">Chetumal</ion-option>
+             <ion-option value="Culiacán">Culiacán</ion-option>
+             <ion-option value="Mazatlán">Mazatlán</ion-option>
+             <ion-option value="Hermosillo">Hermosillo</ion-option>
+             <ion-option value="Villahermosa">Villahermosa</ion-option>
+             <ion-option value="Matamoros">Matamoros</ion-option>
+             <ion-option value="Veracruz">Veracruz</ion-option>
+             <ion-option value="Mérida">Mérida</ion-option>
+             <ion-option value="Puebla">Puebla</ion-option>
+           </div>
+       </ion-select>
+     </ion-item>
+     <br>
+     <ion-item>
+     </ion-item>
+    </ion-list>
+  </form>
+  <ion-footer no-border>
+      <ion-toolbar>
+          <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                </ion-col>
+                <ion-col col-6>
+                      <div text-center>
+                          <button ion-button block round color="dark" (click)="ciudadAdd()" [disabled]="!myForm.valid">Guardar</button>
+                      </div>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-toolbar>
+  </ion-footer>
+ </ion-content>

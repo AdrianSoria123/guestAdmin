@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Arquitectura de la Sucursal</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo_admin">
+    <ion-row>
+        <ion-col text-center>
+            <div class="">
+                <img class="imagen_croquis" [src]="sucursal.croquis">
+                <ion-badge (click)="goEditPerfilImagen(sucursal.uid)" class="edit_pho">
+                    <ion-icon name="md-brush" ios="ios-outline" md="md-brush"></ion-icon>
+                </ion-badge>
+            </div>
+        </ion-col>
+    </ion-row>
+
+    <ion-list>
+        <ion-item-sliding>
+            <ion-item>
+                Hola
+            </ion-item>
+            <!-- <ion-item-options side="right">
+
+            </ion-item-options> -->
+            <ion-item-options side="right">
+                <button ion-button color="primary">
+                  <ion-icon name="mail"></ion-icon>
+                  Email
+                </button>
+                <button ion-button color="dark">
+                        <ion-icon name="text"></ion-icon>
+                        Text
+                      </button>
+                <button ion-button color="secondary">
+                        <ion-icon name="call"></ion-icon>
+                        Call
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+</ion-content>

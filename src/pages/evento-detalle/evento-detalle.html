@@ -1,0 +1,44 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Guest Eventos</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo2 cards-bg" padding>
+    <ion-card class="atras">
+
+        <img [src]="evento.img" />
+        <ion-card-content class="atras" text-center>
+            <ion-card-title>
+                {{ evento.titulo }}
+            </ion-card-title>
+            <p>
+                {{evento.obs}}
+            </p>
+            <p>
+                {{evento.fecha}}, {{ evento.hora }}
+            </p>
+            <p>
+                {{evento.categoria}}
+            </p>
+            <p>
+                {{evento.lugar}}
+            </p>
+        </ion-card-content>
+
+        <ion-row no-padding>
+            <ion-col>
+                <button ion-button clear small color="gold" icon-start (click)="Reservar(evento.uid, sucursalID)">
+          <ion-icon name='custom-corona'></ion-icon>
+          Reservar
+        </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+
+</ion-content>

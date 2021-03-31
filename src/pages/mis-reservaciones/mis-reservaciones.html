@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+        <ion-title>Reservaciones en Curso</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="list-avatar-page">
+    <!-- <ion-searchbar [animated]="true" (ionInput)="getItems($event)"></ion-searchbar> -->
+    <ion-list>
+        <!-- <ion-list-header>Reservaciones Pendientes</ion-list-header> -->
+        <div *ngFor="let reservacion of reservaciones">
+            <ion-item *ngIf="reservacion.estatus != 'Terminado' && reservacion.estatus!= 'EnProceso'">
+                <ion-avatar item-start>
+                    <img src="../assets/imgs/icons/book.png">
+                </ion-avatar>
+                <ng-container *ngFor="let cliente of clientes">
+                    <h2 *ngIf="cliente.uid == reservacion.idUsuario">{{ cliente.displayName }} </h2>
+                </ng-container>
+                <p>{{ reservacion.estatus }} </p>
+                <p>{{ reservacion.fechaR_ | date : 'dd/MM/yyyy'}} </p>
+                <ion-note item-end>{{ reservacion.hora }} </ion-note>
+                <!-- <button ion-button color="dark" round>
+              <ion-icon ios="ios-more" md="md-more"></ion-icon>
+            </button> -->
+                <!-- <button ion-button color="dark" round>
+                <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle-outline"></ion-icon>
+              </button> -->
+            </ion-item>
+        </div>
+    </ion-list>
+    <!-- <ion-fab right bottom>
+        <button ion-fab color="dark" (click)="scan()"><ion-icon ios="ios-barcode" md="md-barcode"></ion-icon></button>
+    </ion-fab> -->
+</ion-content>

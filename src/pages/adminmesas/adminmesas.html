@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <!-- <ion-title>Mesas</ion-title> -->
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo2">
+
+    <ion-list>
+        <ion-list-header>
+            Administrar Mesas
+        </ion-list-header>
+        <ion-item>
+            <h2>{{area.nombre}}</h2>
+            <p>Área</p>
+        </ion-item>
+        <ion-item>
+            <h2>{{zona.nombre}}</h2>
+            <p>Zona</p>
+        </ion-item>
+    </ion-list>
+    <ion-item-group>
+        <ion-row class="grid-3 grid-example">
+            <ion-col width-50 class="grid-item" *ngFor="let mesa of mesas">
+                <div class="grid-item-wrapper">
+                    <div class="grid-item-inner" (click)="modificaMesa(mesa.id, mesa.mesa, mesa.numPersonas)">
+                        <ion-icon class="icono"><img src="../assets/imgs/icons/mesa.png" /></ion-icon>
+                        <div class="grid-item-inner" class="color1">
+                            {{mesa.numPersonas}}
+                        </div>
+                    </div>
+                    <div class="numMesas" text-center>
+                        {{mesa.mesa}}
+                    </div>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-item-group>
+</ion-content>

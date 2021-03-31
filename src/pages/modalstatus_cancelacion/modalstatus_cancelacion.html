@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Cancelar reservacion</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo2">
+    <div class="divBtn">
+        <button class="btnClose" ion-button icon-only (click)="closeModal()">
+            <ion-icon item-right name="ios-close-outline"></ion-icon>
+        </button>
+    </div>
+    
+    <form [formGroup]="myForm" novalidate class="card_atras" (ngSubmit)="saveData()">
+        <div class="style1">
+            <ion-row>
+                <ion-col text-center>
+                    Motivo
+                </ion-col>
+                <ion-col text-center class="color2">
+                    <ion-item >
+                        <ion-select [(ngModel)]="data.motivo"   name="motivo" formControlName="motivo" >
+                            <ion-option>Mesa no disponible</ion-option>                                
+                            <ion-option>Nos reservamos derecho de admisión</ion-option>
+                            <ion-option>Estamos buscando en ticketmaster</ion-option>
+                            <ion-option>Se agotaron los espacios para reservar</ion-option>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </div>    
+
+        <div class="style1" >
+            <ion-row>
+                <ion-col text-center>
+                    Estatus
+                </ion-col>
+                <ion-col text-center>
+                    <ion-item>
+                        <ion-label>Cancelado</ion-label>
+                        <ion-input type="hidden" [(ngModel)]="data.status"  name="status" formControlName="status" value="Cancelado"></ion-input>                      
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <button ion-button class="btnModal" type="submit" color="light" [disabled]="!myForm.valid">Actualizar</button>
+      </form>
+
+</ion-content>

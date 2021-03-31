@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Agregar cupones</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="myForm" novalidate class="">
+   <ion-list>
+       <ion-item>
+        <ion-label class="blanco_1">Sucursal</ion-label>
+          <ion-select [(ngModel)]="sucursal" multiple="false" cancelText="Cancelar" okText="Aceptar" name="sucursal" formControlName="sucursal">
+             <div>
+               <ion-option *ngFor="let sucur of sucursales" [value]="sucur.uid">{{ sucur.displayName }}</ion-option>
+             </div>
+        </ion-select>
+       </ion-item>
+       <br>
+       <ion-item>
+         <ion-label class="blanco_1">Valor del cupón (MXN)</ion-label>
+         <ion-input type="number" [(ngModel)]="valorCupon" name="valorCupon" formControlName="valorCupon"></ion-input>
+       </ion-item>
+       <br>
+       <ion-item>
+         <ion-label class="blanco_1">Cupones a generar</ion-label>
+         <ion-input type="number" [(ngModel)]="numCupones" name="numCupones" formControlName="numCupones"></ion-input>
+       </ion-item>
+       <br>
+       <ion-item>
+         <ion-label class="blanco_1">Condición</ion-label>
+         <ion-select [(ngModel)]="condicion" multiple="false" cancelText="Cancelar" okText="Aceptar" name="condicion" formControlName="condicion">
+             <div>
+               <ion-option value="10reservaciones">Usuario + de 10 reservaciones</ion-option>
+               <ion-option value="20reservaciones">Usuario + de 20 reservaciones</ion-option>
+             </div>
+         </ion-select>
+       </ion-item>
+       <br>
+       <ion-item>
+         <ion-label class="blanco_1">Fecha de expiración</ion-label>
+         <ion-datetime item-end displayFormat="DD/MM/YYYY" [(ngModel)]="fechaExp" name="fechaExp" formControlName="fechaExp" min={{fechaActual}} doneText=Aceptar cancelText=Cancelar></ion-datetime>
+       </ion-item>
+       <br>
+       <ion-item>
+       </ion-item>
+
+    </ion-list>
+  </form>
+  <ion-footer no-border>
+      <ion-toolbar>
+          <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                </ion-col>
+                <ion-col col-6>
+                      <div text-center>
+                          <button ion-button block round color="dark" (click)="cuponAdd()" [disabled]="!myForm.valid">Generar</button>
+                      </div>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+      </ion-toolbar>
+  </ion-footer>
+ </ion-content>

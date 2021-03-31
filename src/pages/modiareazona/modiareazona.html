@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+        <!-- <ion-title>Modificar Área y Zona</ion-title> -->
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo2">
+    <form [formGroup]="myForm" novalidate class="card_atras">
+        <div class="style1">
+            <ion-row>
+                <ion-col text-center>
+                    Área
+                </ion-col>
+                <ion-col text-center>
+                    <ion-item>
+                        <ion-label>Área</ion-label>
+                        <ion-select [(ngModel)]="data.area" multiple="false" cancelText="Cancelar" okText="Aceptar" name="area" formControlName="area" (ionChange)=getZonas()>
+                            <div>
+                                <ion-option *ngFor="let area of areas" value="{{area.$key}}">{{area.nombre}}</ion-option>
+                            </div>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div class="style1">
+            <ion-row>
+                <ion-col text-center>
+                    Zona
+                </ion-col>
+                <ion-col text-center>
+                    <ion-item>
+                        <ion-label>Zona</ion-label>
+                        <ion-select [(ngModel)]="data.zona" multiple="false" cancelText="Cancelar" okText="Aceptar" name="zona" formControlName="zona" (ionChange)=alertConsumo()>
+                            <div>
+                                <ion-option *ngFor="let zona of zonas" value="{{zona.$key}}">{{ zona.nombre }}
+                                </ion-option>
+                            </div>
+                        </ion-select>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </div>
+    </form>
+
+</ion-content>

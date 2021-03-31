@@ -1,0 +1,40 @@
+page-modalstatus_cancelacion {
+    .style1 {
+        color: #ffffff;
+        margin-top: 15%;
+    }
+}
+
+.alert-md [aria-checked=false] .alert-radio-label{
+    color:#a09560;
+}
+
+.btnModal{
+    //color:#a09560;
+    margin-left: 40%; margin-top: 10%;
+}
+
+.btnClose{
+    //   align: center;
+    background-color: red;
+   }
+   .divBtn{
+       text-align: right;
+   
+   }
+
+   ion-select-option {
+    color: red;
+  }
+
+  ion-select{
+      max-width: 100%;
+  }
+
+   .select-text{
+       color: black;
+    //    max-width: 100% !important;
+       min-width: 90%;
+   }
+
+  

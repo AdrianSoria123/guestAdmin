@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-navbar>
+    <div *ngFor="let sucursal of sucursales">
+     <ion-title *ngIf="sucursal.uid == idSucursal">Cupones de {{sucursal.displayName}}</ion-title>
+    </div>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondo_admin">
+    <ion-list clxass="card_atras">
+        <ion-item>
+          <ion-thumbnail item-start>
+          </ion-thumbnail>
+          <div *ngFor="let cupon of cupones">
+              <div *ngIf="cupon.estatus == 'Activo'">
+                <ion-badge color="naranja" item-end>
+                    Cupón de descuento {{ cupon.valorCupon | currency }}
+                    <br>
+                    Código {{ cupon.codigoCupon }}
+                    <br>
+                    <ion-badge color="light"> Disponibles {{ cupon.numCupones }}</ion-badge>
+                    <br>
+                    <ion-badge color="dark">{{ cupon.estatus }}</ion-badge>
+                  </ion-badge>
+              </div>
+          </div>
+        </ion-item>
+      </ion-list>
+</ion-content>

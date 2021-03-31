@@ -1,0 +1,40 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cupones</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="fondo_admin">
+    <ion-card-header class="marg" color="light">
+      <button (click)="agregarCupon()" text-align ion-button clear small color="light" icon-left item-end>
+        <ion-icon name="add" class="colorIcon" style="zoom:1.1;"></ion-icon>
+         Agregar cupones a una sucursal
+      </button>
+    </ion-card-header>
+    <ion-list clxass="card_atras" *ngFor="let sucursal of sucursales">
+        <ion-item>
+           <ion-thumbnail item-start>
+             <img [src]="sucursal.photoURL">
+             <h2 style="text-align: center">{{sucursal.displayName}}</h2>
+           </ion-thumbnail>
+           <ion-badge (click)="cuponesDisponibles(sucursal.uid)" text-align color="naranja" item-end>
+              Ver cupones disponibles
+           </ion-badge>
+           <!--<div *ngFor="let cupon of cupones">-->
+            <!-- <div *ngIf="cupon.idSucursal == sucursal.uid">-->
+                <!--<div *ngIf="cupon.estatus == 'Activo'">-->
+                <!--  <ion-badge color="naranja" item-end>
+                    Cupón de descuento {{ cupon.valorCupon | currency }}
+                    <br>
+                    Código {{ cupon.codigoCupon }}
+                    <br>
+                    <ion-badge color="light"> Disponibles {{ cupon.numCupones }}</ion-badge>
+                    <br>
+                    <ion-badge color="dark">{{ cupon.estatus }}</ion-badge>
+                  </ion-badge>-->
+              <!--  </div>-->
+            <!-- </div>-->
+           <!--</div>-->
+        </ion-item>
+    </ion-list>
+</ion-content>

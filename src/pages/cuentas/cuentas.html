@@ -1,0 +1,98 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cuentas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="myForm" (ngSubmit)="saveData()">
+        <ion-list>
+            <ion-item>
+                <ion-label>Fecha Inicio</ion-label>
+                <ion-datetime formControlName="FechaInicio" displayFormat="DD/MM/YYYY" min="2018" max="2050-10-31" doneText=Aceptar cancelText=Cancelar> </ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Fecha Fin</ion-label>
+                <ion-datetime formControlName="FechaFin" displayFormat="DD/MM/YYYY" min="2018" max="2050-10-31" doneText=Aceptar cancelText=Cancelar></ion-datetime>
+            </ion-item>            
+        </ion-list>
+
+        <div padding>
+            <button ion-button  color="naranja" block type="submit" [disabled]="!myForm.valid" >Generar</button>
+          </div>
+    </form>
+
+   
+   <ion-card class="card_atras" *ngIf="reservaciones != null ">
+    <ion-card-content class="card_atras"  >
+        <ion-card-title> 
+            <h5 class="blanco_1"> Resumen</h5>
+                                     
+        </ion-card-title>
+
+        
+        <ion-item class="card_atras" >
+            <a class="blanco_2">Total</a>
+            <h4 class="blanco_1"  ></h4>
+            <ion-badge class="negro" item-end> {{ comision2 | currency}}</ion-badge>
+        </ion-item>
+        <ion-item class="card_atras" >
+                <a class="blanco_2"> Guest (5.6%)</a>
+                <h4 class="blanco_1"  ></h4>
+                <ion-badge class="negro" item-end> {{ comision1 | currency}}</ion-badge>
+        </ion-item>
+
+        
+        <ion-item class="card_atras" >
+            <a class="blanco_2"> Propina</a>
+            <h4 class="blanco_1"  ></h4>
+            <ion-badge class="negro" item-end> {{ propina | currency}}</ion-badge>
+        </ion-item>
+
+        <ion-item class="card_atras" >
+                <a class="blanco_2">Total</a>
+                <h4 class="blanco_1"  ></h4>
+                <ion-badge class="negro" item-end> {{ sumatoria | currency }} </ion-badge>
+            </ion-item>
+
+        <ion-item class="card_atras" >
+            <a  (click)="accion1()" > Ver detalle </a>
+        </ion-item>
+
+        <!-- <button ion-button color="naranja" block (click)="guardarCorte()">Guardar</button> -->
+    </ion-card-content>
+   </ion-card>
+   
+    <ion-card class="card_atras" *ngFor="let reserva of reservaciones" >
+
+        <ion-card-content class="card_atras"  *ngIf="ocultar1">
+            <ion-card-title> 
+            <p class="blanco_2">Reservacion: {{ reserva.folio}}</p>
+            </ion-card-title>
+
+            <ion-item class="card_atras">
+                <img class="icon" src="../assets/imgs/icons/calendario.png" item-start>
+                <p class="blanco_2">Fecha de reservación</p>
+                <ion-badge class="negro" item-end>{{ reserva.fechaR }} </ion-badge>
+            </ion-item>
+            <ion-item class="card_atras">
+                <img class="icon" src="../assets/imgs/icons/time.png" item-start>
+                <a class="blanco_2">Estatus</a>
+                <ion-badge class="negro" item-end> {{ reserva.estatus }}  </ion-badge>
+            </ion-item>
+
+            <ion-item class="card_atras" >
+                    <img class="icon" src="../assets/imgs/icons/billete.png" item-start>
+                    <a class="blanco_2">Total</a>
+                    <h4 class="blanco_1"  ></h4>
+                    <ion-badge class="negro" item-end> {{ reserva.totalReservacion | currency}} </ion-badge>
+            </ion-item>
+
+        </ion-card-content>
+        
+    </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title> {{ _cap.selectedEventoItem.titulo }} </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content class="fondo_admin" padding>
+    <ion-list>
+        <ion-list-header>
+            Editar: {{ _cap.selectedEventoItem.titulo }}
+        </ion-list-header>
+        <ion-input type="hidden" [(ngModel)]="_cap.selectedEventoItem.uid"></ion-input>
+        <ion-input type="hidden" [(ngModel)]="_cap.selectedEventoItem.key"></ion-input>
+        <ion-item>
+            <ion-label floating>Nombre</ion-label>
+            <ion-input type="text" [(ngModel)]="_cap.selectedEventoItem.titulo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Fecha</ion-label>
+            <ion-input type="date" [(ngModel)]="_cap.selectedEventoItem.fecha"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Hora inicio</ion-label>
+            <ion-input type="time" [(ngModel)]="_cap.selectedEventoItem.hora"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Hora fin</ion-label>
+            <ion-input type="time" [(ngModel)]="_cap.selectedEventoItem.hora_fin"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Categoría</ion-label>
+            <ion-select [(ngModel)]="_cap.selectedEventoItem.categoria">
+                <ion-option value="Deportivo">Deportivo</ion-option>
+                <ion-option value="Cultural">Cultural</ion-option>
+                <ion-option value="Académico">Académico</ion-option>
+                <ion-option value="Recreativo">Recreativo</ion-option>
+                <ion-option value="Social">Social</ion-option>
+                <ion-option value="Festival">Festival</ion-option>
+                <ion-option value="Homenaje">Homenaje</ion-option>
+                <ion-option value="Reconocimiento">Reconocimiento</ion-option>
+                <ion-option value="Feria">Feria</ion-option>
+                <ion-option value="Cumpleaños">Cumpleaños</ion-option>
+                <ion-option value="Familiy">Familiy Day</ion-option>
+                <ion-option value="Simposio">Simposio</ion-option>
+                <ion-option value="Otro">Otro</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Lugar</ion-label>
+            <ion-input type="text" [(ngModel)]="_cap.selectedEventoItem.lugar"></ion-input>
+        </ion-item>
+
+        <ion-item class="fond">
+            <ion-label floating>Descripción</ion-label>
+            <ion-textarea class="fond" placeholder="Descripción" [(ngModel)]="_cap.selectedEventoItem.obs" name="obs" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <button (click)="editEventoImg(_cap.selectedEventoItem.key, _cap.selectedEventoItem.uid)"><img [src]="_cap.selectedEventoItem.img" alt=""></button>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <button class="md-trash" color="dark" ion-button block (click)="saveEventoItem()">Guardar edición</button>
+            </ion-col>
+        </ion-row>
+
+
+    </ion-list>
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <!-- <ion-title>modalmesas</ion-title> -->
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="fondo2">
+    <ion-item-group>
+        <ion-row class="grid-3 grid-example">
+            <ion-col width-50 class="grid-item" *ngFor="let mesa of mesas">
+                <div *ngIf="mesa.estatus=='libre'">
+                    <div class="grid-item-wrapper">
+                        <div class="numPersonas" text-center>
+                            {{mesa.numPersonas}}
+                        </div>
+                        <div class="grid-item-inner" (click)="selecMesa(mesa.id, mesa.mesa)">
+                            <ion-icon class="icono"><img src="../assets/imgs/icons/mesa.png" /></ion-icon>
+                            <div class="grid-item-inner" class="color1">
+                            </div>
+                        </div>
+                        <div class="numMesas" text-center>
+                            {{mesa.mesa}}
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="mesa.estatus=='ocupada'">
+                    <div class="numPersonas" text-center>
+                        {{mesa.numPersonas}}
+                    </div>
+                    <div class="grid-item-wrapper1">
+                        <div class="grid-item-inner1" (click)="selecMesa(mesa.id)">
+                            <ion-icon class="icono"><img src="../assets/imgs/icons/mesa.png" /></ion-icon>
+                             <div class="grid-item-inner" class="color1">
+                                {{mesa.numPersonas}}
+                            </div> 
+                        </div>
+                        <div class="numMesas" text-center>
+                            {{mesa.mesa}}
+                        </div>
+                    </div>
+                </div> -->
+            </ion-col>
+        </ion-row>
+    </ion-item-group>
+
+    <div>
+        <div *ngIf="estatus==true" class="numMesas">
+            Ya hay reservaciones de la mesa
+        </div>
+        <div *ngIf="estatus == false" class="numMesas">
+            No hay reservaciones
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <ion-row>
+        <ion-col text-center (click)="Cerrar()">
+            <ion-icon ios="ios-close-circle" md="md-close-circle" class="icono"></ion-icon>
+        </ion-col>
+        <!-- <ion-col text-center (click)="Aceptar()">
+            <ion-icon ios="ios-checkmark-circle" md="md-checkmark-circle" class="icono"></ion-icon>
+        </ion-col> -->
+    </ion-row>
+</ion-content>

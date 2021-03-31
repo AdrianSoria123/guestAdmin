@@ -1,0 +1,37 @@
+<!--
+  Generated template for the AdminUserUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Usuarios</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo_admin">
+    <ion-card-header color="light">Lista de usuarios</ion-card-header>
+    <div *ngFor="let user of users">
+
+        <ion-list *ngIf="user.type == 'u' " class="list_blanco_transp">
+            <ion-item (click)="selectUsuario(user.uid)">
+                <ion-thumbnail item-start>
+                    <img [src]="user.photoURL">
+                </ion-thumbnail>
+                <h6>
+                    Nombre
+                    <p class="p">{{ user.displayName }}</p>
+                </h6>
+                <ion-badge *ngIf="user.active == false " class="fon" item-end>Inhabilitado</ion-badge>
+                <h6>
+                    ID
+                    <p class="p">{{ user.uid }}</p>
+                </h6>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

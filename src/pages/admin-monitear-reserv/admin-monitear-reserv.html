@@ -1,0 +1,76 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Reservaciones próximas</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="list-avatar-page fondo_admin">
+    <!-- <ion-searchbar [animated]="true" (ionInput)="getItems($event)"></ion-searchbar> -->
+  <!--  <ion-list *ngIf="reservaciones.length != 0">-->
+        <ion-list-header>Próximas</ion-list-header>
+        <ion-item *ngFor="let reservacion of reservaciones">
+            <ion-avatar item-start>
+                <img src="../assets/imgs/icons/book.png">
+            </ion-avatar>
+            <ng-container *ngFor="let cliente of clientes">
+                <h2 *ngIf="cliente.uid == reservacion.idUsuario">{{ cliente.displayName }} </h2>
+            </ng-container>
+            <p>Folio:{{ reservacion.folio }} </p>
+            <p>{{ reservacion.estatus }} </p>
+            <p>{{ reservacion.fechaR}} </p>
+            <ion-note item-end>{{ reservacion.hora }} </ion-note>
+            <button ion-button color="dark" round (click)="goDetalle(reservacion.idReservacion)">
+                <!-- <ion-icon ios="ios-more" md="md-more"></ion-icon> -->
+                 Detalle
+            </button>
+            <!--<button ion-button color="dark" round (click)="aceptarReserv(reservacion.idReservacion)">
+                  <!-- <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle-outline"></ion-icon>  -->
+                <!--  Aceptar
+                </button>-->
+        </ion-item>
+        <ion-item *ngFor="let reservaciona of reservacionesAcep">
+            <ion-avatar item-start>
+                <img src="../assets/imgs/icons/book.png">
+            </ion-avatar>
+            <ng-container *ngFor="let cliente of clientes">
+                <h2 *ngIf="cliente.uid == reservaciona.idUsuario">{{ cliente.displayName }} </h2>
+            </ng-container>
+            <p>Folio:{{ reservaciona.folio }} </p>
+            <p>Aceptado </p>
+            <p>{{ reservaciona.fechaR}} </p>
+            <ion-note item-end>{{ reservaciona.hora }} </ion-note>
+            <button ion-button color="dark" round (click)="goDetalle(reservaciona.idReservacion)">
+                <!-- <ion-icon ios="ios-more" md="md-more"></ion-icon> -->
+                 Detalle
+            </button>
+            <!--<button ion-button color="dark" round (click)="aceptarReserv(reservacion.idReservacion)">
+                  <!-- <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle-outline"></ion-icon>  -->
+                <!--  Aceptar
+                </button>-->
+        </ion-item>
+    <!--</ion-list>-->
+    <!--<ion-list *ngIf="reservaciones.length == 0 && reservacionesAcep.length == 0">
+        <!-- <ion-item>
+            <ion-avatar item-start>
+                <img src="../assets/imgs/icons/book.png">
+            </ion-avatar>
+            Por el momento no hay reservaciones disponibles.
+        </ion-item> -->
+      <!--  <ion-card>
+            <div text-center>
+                <img text-center class="adv" src="../assets/imgs/icons/advertencia.png" />
+            </div>
+            <ion-card-content>
+                <ion-card-title text-center>
+                    Aviso
+                </ion-card-title>
+                <p>
+                    Por el momento no hay reservaciones.
+                </p>
+            </ion-card-content>
+        </ion-card>
+    </ion-list>-->
+    <ion-fab right bottom>
+        <button *ngIf="menu != 'menu'" ion-fab color="dark" (click)="scan()"><ion-icon ios="ios-barcode" md="md-barcode"></ion-icon></button>
+    </ion-fab>
+</ion-content>

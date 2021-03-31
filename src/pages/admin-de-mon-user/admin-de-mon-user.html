@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Detalle usuario</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg fondo_admin">
+    <div text-center>
+        <ion-row>
+            <ion-col class="text-center">
+                <img style="border-radius:65px;" height="150" width="150" [src]="this.user.photoURL" />
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-card>
+
+        <!-- <img style="border-radius:65px;" height="150" width="150" src="../assets/imgs/icons/book.png" /> -->
+
+        <ion-card-content>
+            <ion-card-title text-center>
+                {{ this.user.displayName }}
+            </ion-card-title>
+            <p>
+                <!-- <img class="cate" src="../assets/imgs/icons/gold_guest.png" /> -->
+            </p>
+        </ion-card-content>
+
+        <ion-item>
+            <ion-icon ios="ios-close-circle" md="md-close-circle" item-start style="color: #EA2027"></ion-icon>
+            Reservaciones canceladas
+            <ion-badge item-end>{{ cancelados.length }} </ion-badge>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon ios="ios-checkmark-circle-outline" md="md-checkmark-circle-outline" item-start style="color: #4cd137"></ion-icon>
+            Reservaciones
+            <ion-badge item-end>{{ terminados.length }} </ion-badge>
+        </ion-item>
+
+    </ion-card>
+</ion-content>

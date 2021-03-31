@@ -1,0 +1,89 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-buttons>
+            <button ion-button (click)="cerrar_modal()">
+              Cerrar
+            </button>
+        </ion-buttons>
+        <ion-title>{{ titulo | placeHolder:'Crear nuevo evento' }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo_admin" padding>
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Titulo</ion-label>
+            <ion-input type="text" [(ngModel)]="titulo"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Fecha </ion-label>
+            <ion-input type="date" [(ngModel)]="fecha"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Hora inicio</ion-label>
+            <ion-input type="time" [(ngModel)]="hora"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Hora fin</ion-label>
+            <ion-input type="time" [(ngModel)]="hora_fin"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Categoría</ion-label>
+            <ion-select [(ngModel)]="categoria">
+                <ion-option value="Deportivo">Deportivo</ion-option>
+                <ion-option value="Cultural">Cultural</ion-option>
+                <ion-option value="Académico">Académico</ion-option>
+                <ion-option value="Recreativo">Recreativo</ion-option>
+                <ion-option value="Social">Social</ion-option>
+                <ion-option value="Festival">Festival</ion-option>
+                <ion-option value="Homenaje">Homenaje</ion-option>
+                <ion-option value="Reconocimiento">Reconocimiento</ion-option>
+                <ion-option value="Feria">Feria</ion-option>
+                <ion-option value="Cumpleaños">Cumpleaños</ion-option>
+                <ion-option value="Familiy">Familiy Day</ion-option>
+                <ion-option value="Simposio">Simposio</ion-option>
+                <ion-option value="Otro">Otro</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Lugar</ion-label>
+            <ion-input type="text" [(ngModel)]="lugar"></ion-input>
+        </ion-item>
+        <ion-item class="fond">
+            <ion-textarea class="fond" placeholder="Descripción" [(ngModel)]="obs" name="obs" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="imagenPreview">
+            <img [src]="imagenPreview">
+        </ion-item>
+    </ion-list>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <button color="dark" ion-button block icon-left (click)="seleccionar_foto()">
+            <ion-icon name="photos"></ion-icon>
+              Seleccionar
+        </button>
+            </ion-col>
+
+        </ion-row>
+        <ion-buttons end>
+          <!--|| imagenPreview.length <= 1-->
+            <button color="dark" ion-button [disabled]="titulo.length <= 1 || imagenPreview.length <= 1" (click)="crear_post(ciudadSucursal)">
+              Crear post
+            </button>
+        </ion-buttons>
+        <!-- <ion-row>
+            <ion-col>
+                <button ion-button block icon-left (click)="mostrar_camara()">
+            <ion-icon name="camera"></ion-icon>
+              Camara
+        </button>
+            </ion-col>
+
+        </ion-row> -->
+    </ion-grid>
+</ion-content>

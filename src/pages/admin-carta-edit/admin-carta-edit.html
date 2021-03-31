@@ -1,0 +1,45 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title> {{crPr.selectedProduct.titulo }} </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content class="fondo_admin" padding>
+    <ion-list>
+        <ion-list-header>
+            Editar: {{ crPr.selectedProduct.titulo }}
+        </ion-list-header>
+        <ion-input type="hidden" [(ngModel)]="crPr.selectedProduct.key"></ion-input>
+        <ion-input type="hidden" [(ngModel)]="crPr.selectedProduct.uid"></ion-input>
+        <ion-item>
+            <ion-label floating>Nombre</ion-label>
+            <ion-input type="text" [(ngModel)]="crPr.selectedProduct.titulo"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Categoria</ion-label>
+            <ion-input type="text" [(ngModel)]="crPr.selectedProduct.categoria"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Precio</ion-label>
+            <ion-input type="number" [(ngModel)]="crPr.selectedProduct.precio"></ion-input>
+        </ion-item>
+        <ion-item class="fond">
+            <ion-label floating>Nota</ion-label>
+            <ion-textarea class="fond" placeholder="Descripción" [(ngModel)]="crPr.selectedProduct.nota" name="nota" autocomplete="on" autocorrect="on"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <button (click)="editCartaImg(crPr.selectedProduct.key, crPr.selectedProduct.uid )"><img [src]="crPr.selectedProduct.img" alt=""></button>
+        </ion-item>
+        <ion-row>
+            <ion-col>
+                <button class="md-trash" color="dark" ion-button block (click)="SaveCartaItem()">Guardar edición</button>
+            </ion-col>
+        </ion-row>
+
+
+    </ion-list>
+</ion-content>

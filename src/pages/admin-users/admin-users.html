@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <button class="bt" ion-button (click)="cerrar_modal()">
+                Cerrar
+        </button>
+        <ion-title>Alta de empleados</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="fondo_admin" padding>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Nombre</ion-label>
+            <ion-input type="text" [(ngModel)]="credentials.name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Correo</ion-label>
+            <ion-input type="email" [(ngModel)]="credentials.email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
+        </ion-item>
+        <ion-item class="fond">
+            <ion-label>Tipo de usuario</ion-label>
+            <ion-select [(ngModel)]="credentials.type" class="fond">
+                <!-- <ion-option value="a">Administrador</ion-option> -->
+                <!--<ion-option value="e">Empleado</ion-option>-->
+                <ion-option value="coordinacion">Coordinación</ion-option>
+                <ion-option value="rp">RP</ion-option>
+                <ion-option value="capitan_mesero">Capitán meseros</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item text-center>
+            <button color="dark" ion-button round style="min-width: 200px; padding: 10px 16px" (click)="register()">Register</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

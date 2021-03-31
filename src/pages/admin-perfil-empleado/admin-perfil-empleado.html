@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Perfil</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>
+            Mis datos
+        </ion-list-header>
+        <ion-item>{{_userEmpleado.displayName}}</ion-item>
+        <ion-item>{{_userEmpleado.correo}} </ion-item>
+        <ion-item *ngIf="_userEmpleado.active == 'true'">Estado:
+            <ion-badge item-end color="sec">Activo</ion-badge>
+        </ion-item>
+        <ion-item *ngIf="_userEmpleado.active == 'false'">Estado:
+            <ion-badge item-end color="red">No Activo</ion-badge>
+        </ion-item>
+    </ion-list>
+    <ion-row>
+        <ion-col>
+            <button class="md-trash" color="dark" ion-button block (click)="changePass(_userEmpleado.correo)">Restablecer/Cambiar Contraseña</button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <!--<ion-col>
+            <button class="md-trash" color="dark" ion-button block (click)="logout()">Cerrar sesión</button>
+        </ion-col>-->
+    </ion-row>
+
+</ion-content>
